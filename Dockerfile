@@ -4,7 +4,7 @@ MAINTAINER y.takahara@gmail.com
 # Configurations
 ENV GO_VERSION 1.4.2
 ENV GETH_GIT_REPO https://github.com/ethereum/go-ethereum
-ENV GETH_GIT_TAG v1.1.3
+ENV GETH_GIT_TAG v1.2.1
 
 # Usual update / upgrade
 ENV DEBIAN_FRONTEND noninteractive
