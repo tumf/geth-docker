@@ -2,7 +2,7 @@ FROM quay.io/tumf/gvm
 MAINTAINER y.takahara@gmail.com
 
 # Configurations
-ENV GO_VERSION 1.4.2
+ENV GO_VERSION 1.5.1
 ENV GETH_GIT_REPO https://github.com/ethereum/go-ethereum.git
 ENV GETH_GIT_TAG v1.2.3
 
@@ -15,7 +15,7 @@ RUN apt-get dist-upgrade -q -y
 # Let our containers upgrade themselves
 RUN apt-get install -q -y unattended-upgrades
 
-# Install Go 1.4.2
+# Install Go
 RUN bash -c "source /root/.gvm/scripts/gvm &&\
     gvm install go${GO_VERSION} &&\
     gvm use go${GO_VERSION} --default"
