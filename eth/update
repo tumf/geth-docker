@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=$(curl https://api.github.com/repos/ethereum/go-ethereum/releases/latest |jq '.tag_name' -r)
+version=$(curl https://api.github.com/repos/ethereum/go-ethereum/releases/latest 2>/dev/null|jq '.tag_name' -r)
 
 [ -z $version ] && exit 1
 
