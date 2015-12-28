@@ -17,12 +17,6 @@ RUN cd /home/ethnetintel &&\
     npm install &&\
     npm install -g pm2
 
-#ENV NODE_ENV "production"
-#ENV CONTACT_DETAILS ""
-#ENV WS_SERVER "wss://stats.ethdev.com"
-#ENV VERBOSITY 2
-#ENV LISTENING_PORT 30303
-
 WORKDIR /home/ethnetintel/eth-net-intelligence-api
 RUN chown -R ethnetintel /home/ethnetintel/eth-net-intelligence-api
 
