@@ -35,4 +35,4 @@ EXPOSE 30303
 
 VOLUME /data
 
-ENTRYPOINT ["geth","--rpc","--rpcaddr 0.0.0.0","--datadir=/data"]
+ENTRYPOINT ["geth","--rpc","--rpcaddr=0.0.0.0","--datadir=/data"]
