@@ -31,7 +31,6 @@ RUN bash -c "source /root/.gvm/scripts/gvm &&\
     install -m 755  build/bin/geth /usr/bin/"
 
 EXPOSE 8545
-EXPOSE 30303
 VOLUME /data
 
 ENTRYPOINT ["geth","--rpc","--datadir=/data"]
