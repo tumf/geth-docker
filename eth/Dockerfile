@@ -35,4 +35,7 @@ EXPOSE 30303
 
 VOLUME /data
 
-ENTRYPOINT ["geth","--rpc","--rpcaddr=0.0.0.0","--datadir=/data"]
+ADD password /password
+ADD start /start
+RUN chmod +x /start
+ENTRYPOINT ["/start"]

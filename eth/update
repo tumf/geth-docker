@@ -1,11 +1,14 @@
 #!/bin/bash
 
 version=$(curl https://api.github.com/repos/ethereum/go-ethereum/releases/latest |jq '.tag_name' -r)
-sed -i".bak" -e "s/^ENV GETH_GIT_TAG .*/ENV GETH_GIT_TAG ${version}/g" Dockerfile
 
-if ! diff Dockerfile Dockerfile.bak
+[ -z $version ] && exit 1
+
+sed -i".bak" -e "s/^ENV GETH_GIT_TAG .*/ENV GETH_GIT_TAG ${version}/g" eth/Dockerfile
+
+if ! diff eth/Dockerfile eth/Dockerfile.bak
 then
-    git add Dockerfile
+    git add eth/Dockerfile
     git commit -m "Update geth version #{version}"
     git push origin master
 fi

@@ -1,0 +1,6 @@
+#!/bin/sh
+if ! geth --datadir=/data --password=password account
+then
+  geth --datadir=/data --password=password account new
+fi
+geth --rpc --rpcaddr=0.0.0.0 --datadir=/data

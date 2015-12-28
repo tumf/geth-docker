@@ -1,0 +1,38 @@
+#!/bin/bash
+set -e
+
+cat > /home/ethnetintel/eth-net-intelligence-api/app.json <<EOF
+[
+  {
+    "name"              : "node-app",
+    "script"            : "app.js",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "merge_logs"        : false,
+    "watch"             : false,
+    "max_restarts"      : 10,
+    "exec_interpreter"  : "node",
+    "exec_mode"         : "fork_mode",
+    "env":
+    {
+      "NODE_ENV"        : "production",
+      "RPC_HOST"        : "$GETH_PORT_8545_TCP_ADDR",
+      "RPC_PORT"        : "$GETH_PORT_8545_TCP_PORT",
+      "LISTENING_PORT"  : "30303",
+      "INSTANCE_NAME"   : "$INSTANCE_NAME",
+      "CONTACT_DETAILS" : "",
+      "WS_SERVER"       : "wss://stats.ethdev.com",
+      "WS_SECRET"       : "$WS_SECRET",
+      "VERBOSITY"       : 2
+    }
+  }
+]
+EOF
+
+cd /home/ethnetintel/eth-net-intelligence-api
+/usr/bin/pm2 start /home/ethnetintel/eth-net-intelligence-api/app.json
+tail -f /home/ethnetintel/.pm2/logs/*.log
+
+##!/bin/sh
+#RPC_HOST=$GETH_PORT_8545_TCP_ADDR \
+#        RPC_PORT=$GETH_PORT_8545_TCP_PORT \
+#        node app.js
