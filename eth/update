@@ -9,6 +9,6 @@ sed -i".bak" -e "s/^ENV GETH_GIT_TAG .*/ENV GETH_GIT_TAG ${version}/g" eth/Docke
 if ! diff eth/Dockerfile eth/Dockerfile.bak
 then
     git add eth/Dockerfile
-    git commit -m "Update geth version #{version}"
+    git commit -m "Update geth version ${version}"
     git push origin master
 fi
