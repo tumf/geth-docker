@@ -26,6 +26,7 @@ RUN bash -c "source /root/.gvm/scripts/gvm &&\
     cd /tmp &&\
     git clone ${GETH_GIT_REPO} &&\
     cd go-ethereum/ &&\
+    git pull --tags &&\
     git checkout refs/tags/${GETH_GIT_TAG} &&\
     make geth &&\
     install -m 755  build/bin/geth /usr/bin/"
